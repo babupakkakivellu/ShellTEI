@@ -1,6 +1,4 @@
-
-
-FROM ubuntu:latest 
+FROM python:3.9.2-slim-buster 
 
 RUN mkdir ./app
 WORKDIR /app
