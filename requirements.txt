@@ -8,3 +8,16 @@ dnspython
 async-timeout
 nest_asyncio
 heroku3
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
+python-dotenv
+tenacity
+python-magic
+streamlink
+yt-dlp
+speedtest-cli
+pybase64
+git+https://github.com/yt-dlp/yt-dlp
+yt-dlp
+ffmpeg
