@@ -1,5 +1,4 @@
 pyrogram
-aria2c
 tgcrypto
 requests
 hachoir
