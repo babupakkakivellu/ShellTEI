@@ -76,5 +76,5 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 COPY default.conf.template /etc/nginx/conf.d/default.conf.template
 COPY nginx.conf /etc/nginx/nginx.conf
 RUN dpkg --add-architecture i386 && apt-get update && apt-get -y dist-upgrade
-RUN chmod u+x /usr/src/app/bin/tools/mp4dump && chmod u+x /usr/src/app/bin/tools/mp4decrypt && chmod u+x /usr/src/app/bin/tools/mkvmerge && chmod u+x /usr/src/app/bin/tools/mediainfo && chmod u+x mp4decrypt/mp4decrypt
+RUN chmod u+x /usr/src/app/bin/tools/mp4dump && chmod u+x /usr/src/app/mp4decrypt && chmod u+x /usr/src/app/mkvmerge && chmod u+x /usr/src/app/mediainfo && chmod u+x /usr/src/app/mp4decrypt
 CMD /bin/bash -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon on;' && cd /usr/src/app && mkdir Downloads && bash start.sh
