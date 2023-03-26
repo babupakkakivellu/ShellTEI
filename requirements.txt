@@ -2,6 +2,10 @@ pyrogram
 tgcrypto
 requests
 hachoir
+telegraph
+pillow
+pySmartDL
+asyncio
 pytz
 dnspython
 async-timeout
