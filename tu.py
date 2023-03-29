@@ -13,7 +13,7 @@ VIDEO_SUFFIXES = ("M4V", "MP4", "MOV", "FLV", "WMV", "3GP", "MPG", "WEBM", "MKV"
 def check_is_streamable(file_path:str) -> bool:
     return file_path.upper().endswith(VIDEO_SUFFIXES)
 
-async def get_width_height(filepath):
+def get_width_height(filepath):
     metadata = extractMetadata(createParser(filepath))
     if metadata.has("width") and metadata.has("height"):
       return metadata.get("width"), metadata.get("height")
@@ -112,7 +112,7 @@ def humanbytes(size):
         n += 1
     return str(round(size, 2)) + " " + Dic_powerN[n] + 'B'
 
-async def TimeFormatter(milliseconds: int) -> str:
+def TimeFormatter(milliseconds: int) -> str:
     seconds, milliseconds = divmod(int(milliseconds), 1000)
     minutes, seconds = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)
@@ -124,7 +124,7 @@ async def TimeFormatter(milliseconds: int) -> str:
         ((str(milliseconds) + "ms, ") if milliseconds else "")
     return tmp[:-2]
 
-async def get_video_duration(input_file):
+def get_video_duration(input_file):
     metadata = extractMetadata(createParser(input_file))
     total_duration = 0
     if metadata.has("duration"):
