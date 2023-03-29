@@ -14,13 +14,13 @@ tony = Client(name="My Tony", api_id=vars.api_id, api_hash=vars.api_hash, bot_to
 
 @tony.on_message(filters.command('start') & filters.private)
 def start(client, message):
-    message.reply_text(text="welcome to Toon Encodes rip bot")
+    message.reply_text(text="welcome to Toon Encodes shell bot")
     print("Welcome to Toon Encodes bot")
 
 @tony.on_message(filters.command('help') & filters.private)
 def help(client, message):
     if help:
-       message.reply_text(text="this bot just for shell, made by @ToonEncodes")
+       message.reply_text(text="This Bot Is For @ToonEncodes Owner/Admin.")
     else:
        message.reply_text(text="No helps")
 
@@ -40,7 +40,7 @@ async def run_comman_d(command_list):
 @tony.on_message(filters.command('shell') & filters.private)
 async def tg_s_Handler(client, message):
     cmd = message.text.split(' ', 1)
-    sts = await message.reply_text("poonakalu loading...")
+    sts = await message.reply_text("Excuting...")
     if len(cmd) == 1:
         return await sts.edit('**Send a command**')
     cmd = cmd[1]
@@ -72,7 +72,7 @@ async def tg_s_Handler(client, message):
 
 @tony.on_message(filters.command("tgup") & filters.private)
 async def tg_up(client, message):
-    sts_msg = await message.reply_text("loading")
+    sts_msg = await message.reply_text("Checking")
     try:
         input_str = message.text.split(" ", 1)[1]
     except:
@@ -84,7 +84,7 @@ async def tg_up(client, message):
 async def tg_up(input_str, message, sts_msg, drm=True):
     if not os_path.exists(input_str):
         await sts_msg.delete()
-        await message.reply_text(f"{input_str} path lo ledu ra")
+        await message.reply_text(f"{input_str} File Is Not There In Path")
         return
     current_time = time.time()
     if os_path.exists(str(message.from_user.id) + ".jpg"):
