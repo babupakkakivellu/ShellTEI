@@ -104,6 +104,8 @@ async def tg_up(input_str, message, sts_msg, drm=True):
         sent_msg = await tony.send_video(chat_id=message.chat.id,
                                 video=input_str,
                                   thumb=thumb,
+                                  chat_id=message.from_user.id,
+                                  caption=f"<code>{filename}</code>",
                                   progress=progress_for_pyrogram,
                                   progress_args=("Uploading",
                                                  sts_msg,
