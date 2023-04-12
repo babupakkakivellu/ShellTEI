@@ -81,10 +81,10 @@ async def tg_up(client, message):
         return
     await tg_up(input_str, message, sts_msg, False)
 
-async def tg_up(input_str, message, sts_msg, drm=True):
+def tg_up(input_str, message, sts_msg, drm=True):
     if not os_path.exists(input_str):
-        await sts_msg.delete()
-        await message.reply_text(f"{input_str} File Is Not There In Path")
+        sts_msg.delete()
+        message.reply_text(f"{input_str} File Is Not There In Path")
         return
     current_time = time.time()
     if os_path.exists(str(message.from_user.id) + ".jpg"):
@@ -95,13 +95,13 @@ async def tg_up(input_str, message, sts_msg, drm=True):
  
     if check_is_streamable(file_name):
         try:
-            duration = await get_video_duration(input_str)
+            duration = get_video_duration(input_str)
         except:
             duration = None
 
     if thumb is None:
-        thumb = await take_ss(input_str)
-        sent_msg = await tony.send_video(chat_id=message.chat.id,
+        thumb = take_ss(input_str)
+        sent_msg = tony.send_video(chat_id=message.chat.id,
                                 video=input_str,
                                   thumb=thumb,
                                   caption=f"<code>{filename}</code>",
