@@ -81,10 +81,10 @@ async def tg_up(client, message):
         return
     tg_up(input_str, message, sts_msg, False)
 
-def tg_up(input_str, message, sts_msg, drm=True):
+async def tg_up(input_str, message, sts_msg, drm=True):
     if not os_path.exists(input_str):
         sts_msg.delete()
-        message.reply_text(f"{input_str} File Is Not There In Path")
+        await message.reply_text(f"{input_str} File Is Not There In Path")
         return
     current_time = time.time()
     if os_path.exists(str(message.from_user.id) + ".jpg"):
