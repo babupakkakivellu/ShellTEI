@@ -20,16 +20,16 @@ def get_width_height(filepath):
     else:
       return 1280, 720
 
-async def take_ss(video_file):
+def take_ss(video_file):
     des_dir = 'Thumbnails'
     if not os.path.exists(des_dir):
         os.mkdir(des_dir)
     des_dir = os.path.join(des_dir, f"{time.time()}.jpg")
-    duration = await get_video_duration(video_file)
+    duration = get_video_duration(video_file)
     if duration == 0:
         duration = 3
     duration = duration // 2
-    status = await downloadaudiocli(["ffmpeg", "-hide_banner", "-loglevel", "error", "-ss", str(duration),
+    status = downloadaudiocli(["ffmpeg", "-hide_banner", "-loglevel", "error", "-ss", str(duration),
                    "-i", video_file, "-frames:v", "1", des_dir])
     if not os.path.lexists(des_dir):
         return None
