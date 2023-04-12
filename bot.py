@@ -71,6 +71,16 @@ async def tg_s_Handler(client, message):
         await sts.edit('Executed')
 
 @tony.on_message(filters.command("tgup") & filters.private)
+async def tg_up(client, message):
+    sts_msg = await message.reply_text("Checking")
+    try:
+        input_str = message.text.split(" ", 1)[1]
+    except:
+        await message.reply_text("send along with file path")
+        await sts_msg.delete()
+        return
+    await tg_up(input_str, message, sts_msg, False)
+    
 async def tg_up(input_str, message, sts_msg, drm=True):
     if not os_path.exists(input_str):
         await sts_msg.delete()
@@ -93,7 +103,7 @@ async def tg_up(input_str, message, sts_msg, drm=True):
         sent_msg = await tony.send_video(chat_id=message.chat.id,
                                 video=input_str,
                                   thumb=thumb,
-                                  caption=f"<code>{filename}</code>",
+                                  caption=f"<code>{input_str}</code>",
                                   progress=progress_for_pyrogram,
                                   progress_args=("Uploading",
                                                  sts_msg,
