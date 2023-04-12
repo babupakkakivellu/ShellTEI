@@ -78,14 +78,16 @@ async def tg_up(input_str, message, sts_msg, drm=True):
         return
     current_time = time.time()
     if os_path.exists(str(message.from_user.id) + ".jpg"):
-	@@ -95,13 +95,13 @@ async def tg_up(input_str, message, sts_msg, drm=True):
-
+        thumb = str(message.from_user.id) + ".jpg"
+    else:
+        thumb = None
+    file_name = os_path.basename(input_str)
+ 
     if check_is_streamable(file_name):
         try:
             duration = await get_video_duration(input_str)
         except:
             duration = None
-
     if thumb is None:
         thumb = await take_ss(input_str)
         sent_msg = await tony.send_video(chat_id=message.chat.id,
