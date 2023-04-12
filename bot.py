@@ -79,7 +79,7 @@ async def tg_up(client, message):
         await message.reply_text("send along with file path")
         await sts_msg.delete()
         return
-    await tg_up(input_str, message, sts_msg, False)
+    tg_up(input_str, message, sts_msg, False)
 
 def tg_up(input_str, message, sts_msg, drm=True):
     if not os_path.exists(input_str):
