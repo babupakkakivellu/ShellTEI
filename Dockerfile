@@ -4,6 +4,7 @@ FROM python:3-slim-buster
 WORKDIR /usr/src/app
 RUN chmod 777 /usr/src/app
 RUN apt-get -qq update
+RUN pip install ffmpeg
 RUN apt-get -qq install -y --no-install-recommends curl git gnupg2 unzip wget pv jq
 
 # add mkvtoolnix
